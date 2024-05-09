@@ -1,0 +1,69 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Agenda Telefônica!</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap CSS -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="/">Agenda</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" href="novo.html">Novo</a></li>
+				</ul>
+				<form class="d-flex" action="/">
+					<input class="form-control me-2" type="text" placeholder="Search"
+						aria-label="Search" id="inputBusca" name="nome">
+					<button class="btn btn-outline-success" type="submit"
+						id="buscaButton">Search</button>
+				</form>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container-fluid">
+		<table class="table table-hover">
+			<thead>
+			<tr>
+				<th>Nome</th>
+				<th>Telefone</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr data-th-each="contato : ${agenda.getContatos()}">
+				<td data-th-text="${contato.getNome()}">Nome e Sobrenome</td>
+				<td><a href=""
+					data-th-href="@{https://wa.me/{telefone}(telefone=${contato.getTelefone()})}"
+					data-th-text="${contato.getTelefone()}">+551111111111</a></td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+
+</body>
+</html>
+
